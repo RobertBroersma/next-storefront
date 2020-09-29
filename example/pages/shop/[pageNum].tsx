@@ -6,8 +6,6 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
   let page = await getProductPage(+pageNum)
 
-  console.log(`/public/.statik/shop/${pageNum}`)
-
   return {
     props: {
       page,

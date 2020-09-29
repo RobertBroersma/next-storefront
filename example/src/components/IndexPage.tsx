@@ -9,8 +9,13 @@ interface IndexPageProps {
   page: Paginated<Product>
 }
 
-export function IndexPage({ page, ...other }: IndexPageProps) {
+export function IndexPage({ page }: IndexPageProps) {
   let { query, route } = useRouter()
+
+  if (!page) {
+    console.log('PAGE NOT GENERATED', route)
+    return <>Something went wrong</>
+  }
 
   return (
     <section className="text-gray-700 body-font bg-gray-200">

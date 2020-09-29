@@ -68,7 +68,6 @@ export function Pagination({
 
   let totalPages = Math.ceil(totalRecords / itemsPerPage)
 
-  console.log({ totalRecords, itemsPerPage, totalPages })
   if (!totalRecords || totalPages === 1) return null
 
   let pages
@@ -77,7 +76,6 @@ export function Pagination({
       i => i !== 1 && i !== totalPages,
     )
   } else if (currentPage > totalPages - showPages) {
-    console.log('2')
     pages = range(Math.max(totalPages - showPages, 2), totalPages - 1).filter(
       i => i !== 1 && i !== totalPages,
     )
