@@ -1,0 +1,13 @@
+{
+  "name": "next-storefront",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "example",
+    "core",
+    "sources/*",
+    "utils"
+  ]
+}

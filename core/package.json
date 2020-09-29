@@ -1,0 +1,15 @@
+{
+  "name": "@next-storefront/core",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@next-storefront/utils": "*",
+    "find-up": "^5.0.0",
+    "findup-sync": "^4.0.0",
+    "slash": "^3.0.0"
+  },
+  "peerDependencies": {
+    "@next-storefront/shopify": "*"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "name": "next-statik-shopify",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Robert Broersma",
+  "license": "MIT",
+  "dependencies": {
+    "@next-storefront/core": "*",
+    "@next-storefront/shopify": "*",
+    "@next-storefront/utils": "*",
+    "dayjs": "^1.8.34",
+    "dotenv": "^8.2.0",
+    "graphql": "^15.3.0",
+    "graphql-request": "^3.0.0",
+    "isomorphic-fetch": "^2.2.1",
+    "lodash.groupby": "^4.6.0",
+    "next": "^9.5.2",
+    "next-images": "^1.4.1",
+    "pure-react-carousel": "^1.27.1",
+    "react": "0.0.0-experimental-33c3af284",
+    "react-dom": "0.0.0-experimental-33c3af284",
+    "react-feather": "^2.0.8",
+    "react-grid-layout": "^1.0.0",
+    "shopify-buy": "^2.11.0",
+    "storyblok-js-client": "^2.5.2",
+    "storyblok-react": "^0.1.1"
+  },
+  "scripts": {
+    "dev": "next",
+    "prebuild": "rimraf ./.statik",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/register": "^7.11.5",
+    "@tailwindcss/custom-forms": "^0.2.1",
+    "@types/node": "^14.0.27",
+    "@types/react": "^16.9.46",
+    "@types/shopify-buy": "^2.10.3",
+    "app-root-path": "^3.0.0",
+    "capture-website": "^1.2.1",
+    "fs-extra": "^9.0.1",
+    "ignore-styles": "^5.0.1",
+    "next-transpile-modules": "^4.1.0",
+    "rimraf": "^3.0.2",
+    "tailwindcss": "^1.6.2",
+    "typescript": "^3.9.7",
+    "webshot": "^0.18.0"
+  }
+}

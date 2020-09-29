@@ -1,0 +1,16 @@
+curl -X POST \
+"https://statikly.myshopify.com/api/2020-07/graphql" \
+-H "Accept: application/json" \
+-H "Content-Type: application/graphql" \
+-H "X-Shopify-Storefront-Access-Token: c4b01a3a7e7a2fff03ae48390375abf4" \
+-d '
+{
+  products(first: 10) {
+    edges {
+      node {
+        handle
+      }
+    }
+  }
+}
+'
