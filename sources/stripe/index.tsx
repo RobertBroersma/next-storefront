@@ -1,5 +1,5 @@
 import { GraphQLClient, gql } from 'graphql-request'
-import { Product } from 'packages/shop/types'
+import { Product } from '@next-storefront/core/types'
 
 const client = new GraphQLClient(
   'https://statikly.myshopify.com/api/2020-07/graphql',

@@ -1,4 +1,4 @@
-import { PriceType } from 'packages/shop/types'
+import { PriceType } from '@next-storefront/core/types'
 
 let currencyCodeToSymbolMap = {
   USD: '$', // US Dollar

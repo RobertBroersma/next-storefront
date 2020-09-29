@@ -112,16 +112,16 @@ export function ProductPage({ product }: ProductPageProps) {
         <title>{product.name} • Statik.ly</title>
         <meta property="description" content={product.description} />
         <meta property="image" content={product.images[0].src} />
-        <meta
+        {/* <meta
           property="canonical"
           content={`${process.env.NEXT_PUBLIC_SITE_URL}${asPath}`}
-        />
+        /> */}
 
         <meta property="og:type" content="product" />
-        <meta
+        {/* <meta
           property="og:url"
           content={`${process.env.NEXT_PUBLIC_SITE_URL}${asPath}`}
-        />
+        /> */}
         <meta property="og:title" content={product.name} />
         <meta property="og:description" content={product.description} />
         <meta property="og:image" content={product.images[0].src} />
