@@ -6,7 +6,7 @@ An dazzlingly fast E-Commerce solution built with Typescript and NextJS.
 
 # Demo
 
-Visit the demo here: INSERT DEMO LINK
+Visit the demo here: https://next-storefront-statik.vercel.app/
 
 > 📝 This demo will be updated regularly as cool new features are rolled out!
 
