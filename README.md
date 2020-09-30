@@ -36,7 +36,7 @@ module.exports = {
 
 ## Usage
 
-Clone `/example` (jk for now you have the clone the entire repo as I'm haven't taken the time to publish the packages yet.)
+If you'd like to try it out yourself, clone the entire repo, cd into `/example` and then:
 
 Install dependencies
 
