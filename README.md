@@ -21,7 +21,7 @@ Visit the demo here: https://next-storefront-statik.vercel.app/
 ## Roadmap
 
 - [x] 1. Work with SSG
-- [ ] 2. Work with Incremental Static (Re)generation
+- [x] 2. Work with Incremental Static (Re)generation
 - [ ] 3. Work with live-updates for things like inventory
 
 ## Config
