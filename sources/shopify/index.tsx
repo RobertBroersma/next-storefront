@@ -220,7 +220,7 @@ async function fetchProductsFromShopify(): Promise<Product[]> {
   return allProducts
 }
 
-const PRODUCT_CACHE = `${process.cwd()}/.statik/shop/shopify/products`
+const PRODUCT_CACHE = `.statik/shop/shopify/products`
 
 // fetch all products from cache or Shopify
 export async function fetchProducts(): Promise<Product[]> {
@@ -253,7 +253,7 @@ export async function fetchProductBySlug(slug: string): Promise<Product> {
   let filePath = path.resolve(PRODUCT_CACHE, `${slug}.json`)
 
   // No caching on production.
-  // TODO: Invalidate cache after timeout, even in production
+  // TODO: Invalidate cache after build and after timeout, and then use cache even in production
   if (!filePath || process.env.NODE_ENV === 'production') {
     console.log(`GETTING ${slug} FROM SHOPIFY`)
     let product = await fetchProductBySlugFromShopify(slug)
