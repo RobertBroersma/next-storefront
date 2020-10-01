@@ -11,8 +11,8 @@ export interface ProductOption {
 
 export interface Product {
   id: string
-  createdAt: Date
-  updatedAt: Date
+  createdAt: string
+  updatedAt: string
   totalInventory: number
   name: string
   vendor: string

@@ -75,7 +75,7 @@ const PRODUCTS_QUERY = gql`
 `
 
 const PRODUCT_BY_HANDLE_QUERY = gql`
-  query productByHandle($handle: String) {
+  query productByHandle($handle: String!) {
     productByHandle(handle: $handle) {
       id
       createdAt
@@ -132,8 +132,8 @@ async function fetchProductBySlugFromShopify(handle: string): Promise<Product> {
 
   let product: Product = {
     id: productByHandle.id,
-    createdAt: new Date(productByHandle.createdAt),
-    updatedAt: new Date(productByHandle.updatedAt),
+    createdAt: productByHandle.createdAt,
+    updatedAt: productByHandle.updatedAt,
     totalInventory: productByHandle.totalInventory,
     name: productByHandle.title,
     vendor: productByHandle.vendor,
@@ -183,8 +183,8 @@ async function fetchProductsFromShopify(): Promise<Product[]> {
       ...products.edges.map(
         ({ node }): Product => ({
           id: node.id,
-          createdAt: new Date(node.createdAt),
-          updatedAt: new Date(node.updatedAt),
+          createdAt: node.createdAt,
+          updatedAt: node.updatedAt,
           totalInventory: node.totalInventory,
           name: node.title,
           vendor: node.vendor,
@@ -228,8 +228,7 @@ export async function fetchProducts(): Promise<Product[]> {
 
   let files = await fs.readdir(PRODUCT_CACHE)
 
-  // No caching on production.
-  if (files.length <= 0 || process.env.NODE_ENV === 'production') {
+  if (files.length <= 0) {
     let allProducts = await fetchProductsFromShopify()
     await Promise.all(
       allProducts.map(product =>
@@ -254,6 +253,7 @@ export async function fetchProductBySlug(slug: string): Promise<Product> {
   let filePath = path.resolve(PRODUCT_CACHE, `${slug}.json`)
 
   // No caching on production.
+  // TODO: Invalidate cache after timeout, even in production
   if (!filePath || process.env.NODE_ENV === 'production') {
     console.log(`GETTING ${slug} FROM SHOPIFY`)
     let product = await fetchProductBySlugFromShopify(slug)

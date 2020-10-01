@@ -13,7 +13,7 @@ export function IndexPage({ page }: IndexPageProps) {
   let { query, route } = useRouter()
 
   if (!page) {
-    console.log('PAGE NOT GENERATED', route)
+    console.log('PAGE NOT GENERATED', route, query)
     return <>Something went wrong</>
   }
 
