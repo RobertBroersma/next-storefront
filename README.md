@@ -2,7 +2,7 @@
 
 # Next Storefront
 
-An dazzlingly fast E-Commerce solution built with Typescript and NextJS.
+A dazzlingly fast E-Commerce solution built with Typescript and NextJS.
 
 # Demo
 
