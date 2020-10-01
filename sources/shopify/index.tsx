@@ -258,7 +258,10 @@ export async function fetchProductBySlug(slug: string): Promise<Product> {
     console.log(`GETTING ${slug} FROM SHOPIFY`)
     let product = await fetchProductBySlugFromShopify(slug)
 
-    await fs.outputJson(`${PRODUCT_CACHE}/${product.slug}.json`, product)
+    // No need to write in prod
+    if (process.env.NODE_ENV !== 'production') {
+      await fs.outputJson(`${PRODUCT_CACHE}/${product.slug}.json`, product)
+    }
 
     return product
   }
