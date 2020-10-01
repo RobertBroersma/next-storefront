@@ -37,12 +37,14 @@ let variantColorMap = {
   orange: 'bg-orange-500',
   red: 'bg-red-500',
   cyan: 'bg-teal-500',
+  blue: 'bg-blue-500',
 }
 
 let variantColorBorderMapActive = {
   orange: 'bg-orange-300',
   red: 'bg-red-300',
   cyan: 'bg-teal-300',
+  blue: 'bg-blue-300',
 }
 
 // TODO: Make a11y
@@ -232,12 +234,17 @@ export function ProductPage({ product }: ProductPageProps) {
                     price={product.variants[0].price}
                     className="title-font font-bold text-2xl text-gray-900"
                   />
-                  <button
-                    onClick={addProductToCart}
-                    className="font-bold flex ml-auto text-white bg-indigo-500 border-0 py-3 px-10 text-lg focus:outline-none hover:bg-indigo-600 rounded-full"
-                  >
-                    Add to Cart
-                  </button>
+                  <div className="ml-auto flex flex-col items-center">
+                    <button
+                      onClick={addProductToCart}
+                      className="font-bold flex text-white bg-indigo-500 border-0 py-3 px-10 text-lg focus:outline-none hover:bg-indigo-600 rounded-full"
+                    >
+                      Add to Cart
+                    </button>
+                    <p className="text-gray-600 text-center pt-2 text-xs">
+                      {product.totalInventory} In stock
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

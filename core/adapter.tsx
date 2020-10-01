@@ -5,9 +5,9 @@ import { Product } from './types'
 
 let itemsPerPage = process.env.NEXT_PUBLIC_ITEMS_PER_PAGE || 9
 
-export async function getProducts(): Promise<Product[]> {
-  let { sources }: Config = require('~/next-storefront.config.js')
+let { sources }: Config = require('~/next-storefront.config.js')
 
+export async function getProducts(): Promise<Product[]> {
   let productPromises: Promise<Product[]>[] = sources.map(
     async ({ fetchProducts }) => {
       return fetchProducts()
@@ -35,8 +35,10 @@ export async function getProductPage(pageNum: number) {
 }
 
 export async function getProductBySlug(slug: string) {
-  let allProducts = await getProducts()
-  let product = allProducts.find(product => product.slug === slug)
+  // TODO: Find better way than checking all sources
+  let product = sources
+    .map(source => source.fetchProductBySlug(slug))
+    .filter(Boolean)[0]
 
   return product
 }

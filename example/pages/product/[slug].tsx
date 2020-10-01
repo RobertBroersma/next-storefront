@@ -1,12 +1,18 @@
 import { getProducts, getProductBySlug } from '@next-storefront/core/adapter'
+import { GetStaticProps } from 'next'
 
-export async function getStaticProps({ params: { slug } }) {
+export const getStaticProps: GetStaticProps = async ({
+  params: { slug },
+}: {
+  params: { slug: string }
+}) => {
   let product = await getProductBySlug(slug)
 
   return {
     props: {
       product,
     },
+    revalidate: 60,
   }
 }
 

@@ -1,5 +1,4 @@
 import { createContext, useState, useCallback, useEffect, useMemo } from 'react'
-import { goToCheckout as goToShopifyCheckout } from '@next-storefront/shopify/cart'
 import { CartItem, PriceType } from '../types'
 
 interface CartContextValue {
@@ -25,7 +24,14 @@ export let CartContext = createContext<CartContextValue>({
   goToCheckout() {},
 })
 
-export function CartProvider({ children }) {
+interface CartProviderProps {
+  children: React.ReactNode
+  checkout: {
+    goToCheckout(cart: CartItem[]): void
+  }
+}
+
+export function CartProvider({ children, checkout }: CartProviderProps) {
   let [cart, updateCart] = useState<CartItem[]>([])
 
   let addToCart = useCallback((newItem: CartItem) => {
@@ -81,7 +87,7 @@ export function CartProvider({ children }) {
   }, [cart])
 
   let goToCheckout = useCallback(() => {
-    goToShopifyCheckout(cart)
+    checkout.goToCheckout(cart)
   }, [cart])
 
   let totalPrice: PriceType = useMemo(

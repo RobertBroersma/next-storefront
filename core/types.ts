@@ -13,6 +13,7 @@ export interface Product {
   id: string
   createdAt: Date
   updatedAt: Date
+  totalInventory: number
   name: string
   vendor: string
   images: Image[]
@@ -50,6 +51,7 @@ export interface Paginated<T> {
 
 export interface Source {
   fetchProducts(): Promise<Product[]>
+  fetchProductBySlug(slug: string): Promise<Product>
 }
 
 export interface Config {

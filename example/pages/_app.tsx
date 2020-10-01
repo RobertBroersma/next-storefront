@@ -1,5 +1,6 @@
 import { CartProvider } from '@next-storefront/core/contexts/CartContext'
 import { useCart } from '@next-storefront/core/hooks/useCart'
+import * as shopifyCheckout from '@next-storefront/shopify/cart'
 import { ShoppingCart } from 'react-feather'
 import { Link } from 'src/components/Link'
 import NextLink from 'next/link'
@@ -54,7 +55,7 @@ function Menu() {
 
 export default function AppRoot({ Component, pageProps }) {
   return (
-    <CartProvider>
+    <CartProvider checkout={shopifyCheckout}>
       <Menu />
 
       <Component {...pageProps} />

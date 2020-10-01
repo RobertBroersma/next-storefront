@@ -2,6 +2,7 @@ import { GraphQLClient, gql } from 'graphql-request'
 import fs from 'fs-extra'
 
 import { Product } from '@next-storefront/core/types'
+import path from 'path'
 
 // TODO: Invalidate cache
 // TODO: Error Handling
@@ -28,6 +29,7 @@ const PRODUCTS_QUERY = gql`
           id
           createdAt
           updatedAt
+          totalInventory
           handle
           title
           vendor
@@ -84,7 +86,6 @@ const PRODUCT_BY_HANDLE_QUERY = gql`
       description
       tags
       totalInventory
-      tracksInventory
 
       options(first: 250) {
         name
@@ -122,6 +123,46 @@ const PRODUCT_BY_HANDLE_QUERY = gql`
   }
 `
 
+async function fetchProductBySlugFromShopify(handle: string): Promise<Product> {
+  console.info(`Fetching Shopify Product with handle: ${handle}`)
+
+  let { productByHandle } = await client.request(PRODUCT_BY_HANDLE_QUERY, {
+    handle,
+  })
+
+  let product: Product = {
+    id: productByHandle.id,
+    createdAt: new Date(productByHandle.createdAt),
+    updatedAt: new Date(productByHandle.updatedAt),
+    totalInventory: productByHandle.totalInventory,
+    name: productByHandle.title,
+    vendor: productByHandle.vendor,
+    images: productByHandle.images.edges.map(({ node: image }) => ({
+      altText: image.altText,
+      src: image.transformedSrc,
+    })),
+    options: productByHandle.options,
+    slug: productByHandle.handle,
+    description: productByHandle.description,
+    tags: productByHandle.tags,
+    variants: productByHandle.variants.edges.map(({ node: variant }) => ({
+      id: variant.id,
+      sku: variant.sku,
+      name: variant.title,
+      price: {
+        amount: +variant.priceV2.amount,
+        currencyCode: variant.priceV2.currencyCode,
+      },
+      image: {
+        altText: variant.image.altText,
+        src: variant.image.transformedSrc,
+      },
+    })),
+  }
+
+  return product
+}
+
 async function fetchProductsFromShopify(): Promise<Product[]> {
   console.info('Fetching Shopify Products')
 
@@ -144,6 +185,7 @@ async function fetchProductsFromShopify(): Promise<Product[]> {
           id: node.id,
           createdAt: new Date(node.createdAt),
           updatedAt: new Date(node.updatedAt),
+          totalInventory: node.totalInventory,
           name: node.title,
           vendor: node.vendor,
           images: node.images.edges.map(({ node: image }) => ({
@@ -180,17 +222,18 @@ async function fetchProductsFromShopify(): Promise<Product[]> {
 
 const PRODUCT_CACHE = `${process.cwd()}/.statik/shop/shopify/products`
 
-// fetchProductsFromCacheOrShopify
+// fetch all products from cache or Shopify
 export async function fetchProducts(): Promise<Product[]> {
   await fs.ensureDir(PRODUCT_CACHE)
 
   let files = await fs.readdir(PRODUCT_CACHE)
 
-  if (files.length <= 0) {
+  // No caching on production.
+  if (files.length <= 0 || process.env.NODE_ENV === 'production') {
     let allProducts = await fetchProductsFromShopify()
     await Promise.all(
       allProducts.map(product =>
-        fs.outputJson(`${PRODUCT_CACHE}/${product.id}.json`, product),
+        fs.outputJson(`${PRODUCT_CACHE}/${product.slug}.json`, product),
       ),
     )
 
@@ -202,4 +245,23 @@ export async function fetchProducts(): Promise<Product[]> {
       .map(file => `${PRODUCT_CACHE}/${file}`)
       .map(filename => fs.readJson(filename)),
   )
+}
+
+// fetch product by handle from cache or Shopify
+export async function fetchProductBySlug(slug: string): Promise<Product> {
+  await fs.ensureDir(PRODUCT_CACHE)
+
+  let filePath = path.resolve(PRODUCT_CACHE, `${slug}.json`)
+
+  // No caching on production.
+  if (!filePath || process.env.NODE_ENV === 'production') {
+    console.log(`GETTING ${slug} FROM SHOPIFY`)
+    let product = await fetchProductBySlugFromShopify(slug)
+
+    await fs.outputJson(`${PRODUCT_CACHE}/${product.slug}.json`, product)
+
+    return product
+  }
+
+  return fs.readJson(filePath)
 }

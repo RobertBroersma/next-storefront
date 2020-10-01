@@ -1,6 +1,14 @@
 {
   "name": "@next-storefront/shopify",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "peerDependencies": {
+    "@next-storefront/core": "*"
+  },
+  "dependencies": {
+    "shopify-buy": "^2.11.0",
+    "fs-extra": "^9.0.1",
+    "graphql-request": "^3.1.0"
+  }
 }
