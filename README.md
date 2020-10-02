@@ -1,4 +1,4 @@
-<a href="https://discord.gg/KZmJGPF" target="_blank" rel="noopener noreferrer" >
+<a href="https://discord.gg/KZmJGPF" >
   <img width="200" src="https://i.imgur.com/En8vQRC.png)" />
  </a>
 
