@@ -10,13 +10,16 @@ Visit the demo here: https://next-storefront-statik.vercel.app/
 
 > 📝 This demo will be updated regularly as cool new features are rolled out!
 
-## Features:
+## TODO Features:
 
 - [x] Static Generation
-- [x] Eeasy serverless deploy with Vercel or Netlify
+- [x] Serverless deploy with Vercel or Netlify
 - [x] Use with Shopify
 - [ ] Use with Stripe Products
 - [ ] Use with other sources
+- [ ] Wishlists
+- [ ] Custom Checkout
+- [ ] Order Pages
 
 ## Roadmap
 
@@ -37,6 +40,8 @@ module.exports = {
 ## Usage
 
 If you'd like to try it out yourself, clone the entire repo, cd into `/example` and then:
+
+Get a Shopify _storefront_ api access token. The best way is to [create a private app](https://shopify.dev/docs/storefront-api/getting-started#private).
 
 Install dependencies
 
