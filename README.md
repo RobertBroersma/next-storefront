@@ -1,3 +1,7 @@
+<a href="https://discord.gg/KZmJGPF" >
+  <img width="200" src="https://i.imgur.com/En8vQRC.png)" />
+ </a>
+
 # 🚧 This code is under construction
 
 # Next Storefront
