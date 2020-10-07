@@ -36,11 +36,11 @@ export async function getProductPage(pageNum: number) {
 
 export async function getProductBySlug(slug: string) {
   // TODO: Find better way than checking all sources
-  let product = sources
-    .map(source => source.fetchProductBySlug(slug))
-    .filter(Boolean)[0]
+  let products = await Promise.all(
+    sources.map(source => source.fetchProductBySlug(slug)),
+  )
 
-  return product
+  return products.filter(Boolean)[0]
 }
 
 export async function getTagPages() {

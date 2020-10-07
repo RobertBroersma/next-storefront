@@ -13,7 +13,7 @@ export interface Product {
   id: string
   createdAt: string
   updatedAt: string
-  totalInventory: number
+  totalInventory: number | 'infinite'
   name: string
   vendor: string
   images: Image[]
@@ -21,7 +21,7 @@ export interface Product {
   description: string
   tags: string[]
   variants: Variant[]
-  options: ProductOption[]
+  options?: ProductOption[]
 }
 
 export interface Variant {

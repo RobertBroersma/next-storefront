@@ -6,7 +6,9 @@
   "license": "MIT",
   "dependencies": {
     "@next-storefront/core": "*",
+    "@next-storefront/json": "*",
     "@next-storefront/shopify": "*",
+    "@next-storefront/stripe": "*",
     "@next-storefront/utils": "*",
     "dayjs": "^1.8.34",
     "dotenv": "^8.2.0",

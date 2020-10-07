@@ -14,14 +14,16 @@ Visit the demo here: https://next-storefront-statik.vercel.app/
 
 > 📝 This demo will be updated regularly as cool new features are rolled out!
 
-## TODO Features:
+## TODO Features (in no particular order):
 
 - [x] Static Generation
 - [x] Serverless deploy with Vercel or Netlify
 - [x] Use with Shopify
+- [x] Use with Stripe Checkout (This paves the way for retrieving products from anywhere!)
 - [ ] Use with Stripe Products
 - [ ] Use with other sources
 - [ ] Wishlists
+- [ ] Search & Filters
 - [ ] Custom Checkout
 - [ ] Order Pages
 
@@ -45,8 +47,6 @@ module.exports = {
 
 If you'd like to try it out yourself, clone the entire repo, cd into `/example` and then:
 
-Get a Shopify _storefront_ api access token. The best way is to [create a private app](https://shopify.dev/docs/storefront-api/getting-started#private).
-
 Install dependencies
 
 ```
@@ -58,10 +58,6 @@ or
 ```
 npm install
 ```
-
-Set environment variables:  
-`NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN=woohoobigtoken`  
-`NEXT_PUBLIC_SHOPIFY_STORE_NAME=statikly` (as in statikly.myshopify.com)
 
 Run Development:
 
@@ -88,3 +84,19 @@ or
 npm run build
 npm start
 ```
+
+### Use with Shopify
+
+Get a Shopify _storefront_ api access token. The best way is to [create a private app](https://shopify.dev/docs/storefront-api/getting-started#private).
+
+Set environment variables:  
+`NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN=woohoobigtoken`  
+`NEXT_PUBLIC_SHOPIFY_STORE_NAME=statikly` (as in statikly.myshopify.com)
+
+### Use With Stripe
+
+Set environment variables:  
+`STRIPE_SECRET_KEY`
+`NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
+
+Create some products by adding `.json` files to the `products` directory.

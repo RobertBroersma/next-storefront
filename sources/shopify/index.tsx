@@ -266,5 +266,9 @@ export async function fetchProductBySlug(slug: string): Promise<Product> {
     return product
   }
 
-  return fs.readJson(filePath)
+  try {
+    return await fs.readJson(filePath)
+  } catch (e) {
+    return null
+  }
 }

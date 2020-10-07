@@ -4,14 +4,14 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    container: {
+      center: true,
+    },
     fontFamily: {
       sans: ['Montserrat'],
       // sans: ['Jost'],
     },
     extend: {
-      borderRadius: {
-        lg: '1rem',
-      },
       boxShadow: {
         outline: '0 0 0 4px rgb(102, 126, 234, 0.5)',
         'outline-dark': '0 0 0 4px rgb(0, 0, 0, 0.2)',

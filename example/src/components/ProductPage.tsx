@@ -14,7 +14,11 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 function findVariantByOptions(product: Product, options: string[]) {
-  return product.variants.find(variant => variant.name === options.join(' / '))
+  return product.variants.find(
+    variant =>
+      variant.name ===
+      (options.length > 0 ? options.join(' / ') : product.name),
+  )
 }
 
 function DefaultSelector({ options, value, onChange }) {
@@ -80,8 +84,8 @@ export function ProductPage({ product }: ProductPageProps) {
   let { asPath } = useRouter()
   let { addToCart } = useCart()
 
-  let [selectedOptions, setSelectedOptions] = useState(() =>
-    product.options.map(option => option.values[0]),
+  let [selectedOptions, setSelectedOptions] = useState(
+    () => product.options?.map(option => option.values[0]) || [],
   )
 
   let setSelectedOptionAtIndex = useCallback(
@@ -211,7 +215,7 @@ export function ProductPage({ product }: ProductPageProps) {
                 </div>
                 <p className="leading-relaxed">{product.description}</p>
 
-                {product.options.map((option, index) => {
+                {product.options?.map((option, index) => {
                   let Component =
                     optionComponents[option.name] || DefaultSelector
 

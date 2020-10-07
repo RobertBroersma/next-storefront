@@ -1,0 +1,33 @@
+{
+  "id": "flower-shirt-123",
+  "checkout": "stripe",
+  "name": "Flower Shirt",
+  "slug": "flower-shirt",
+  "tags": ["shirt", "summer"],
+  "description": "Button-down shirt with flowers.",
+  "vendor": "Statik.ly",
+  "createdAt": "2020-10-07",
+  "updatedAt": "2020-10-07",
+  "totalInventory": "infinite",
+  "images": [
+    {
+      "src": "https://images.unsplash.com/photo-1517191297489-48c463380e8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2134&q=80",
+      "altText": "Flower Shirt"
+    }
+  ],
+  "variants": [
+    {
+      "id": "flower-shirt-123",
+      "sku": "flower-shirt-123",
+      "name": "Flower Shirt",
+      "price": {
+        "amount": 20,
+        "currencyCode": "EUR"
+      },
+      "image": {
+        "src": "https://images.unsplash.com/photo-1517191297489-48c463380e8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2134&q=80",
+        "altText": "Flower Shirt"
+      }
+    }
+  ]
+}

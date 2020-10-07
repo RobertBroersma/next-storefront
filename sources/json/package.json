@@ -1,0 +1,12 @@
+{
+  "name": "@next-storefront/json",
+  "version": "0.1.1",
+  "main": "index.js",
+  "license": "MIT",
+  "peerDependencies": {
+    "@next-storefront/core": "*"
+  },
+  "dependencies": {
+    "fs-extra": "^9.0.1"
+  }
+}
