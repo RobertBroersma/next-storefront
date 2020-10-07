@@ -21,15 +21,15 @@ export async function fetchProducts(): Promise<Product[]> {
 }
 
 export async function fetchProductBySlug(slug: string): Promise<Product> {
-  await fs.ensureDir(PRODUCT_DIR)
-
-  let filePath = path.join(PRODUCT_DIR, `${slug}.json`)
-
-  if (!filePath) {
-    return null
-  }
-
   try {
+    await fs.ensureDir(PRODUCT_DIR)
+
+    let filePath = path.join(PRODUCT_DIR, `${slug}.json`)
+
+    if (!filePath) {
+      return null
+    }
+
     return await fs.readJson(filePath)
   } catch (e) {
     return null

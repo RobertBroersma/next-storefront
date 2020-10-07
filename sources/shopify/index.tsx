@@ -248,25 +248,25 @@ export async function fetchProducts(): Promise<Product[]> {
 
 // fetch product by handle from cache or Shopify
 export async function fetchProductBySlug(slug: string): Promise<Product> {
-  await fs.ensureDir(PRODUCT_CACHE)
+  try {
+    await fs.ensureDir(PRODUCT_CACHE)
 
-  let filePath = path.resolve(PRODUCT_CACHE, `${slug}.json`)
+    let filePath = path.resolve(PRODUCT_CACHE, `${slug}.json`)
 
-  // No caching on production.
-  // TODO: Invalidate cache after build and after timeout, and then use cache even in production
-  if (!filePath || process.env.NODE_ENV === 'production') {
-    console.log(`GETTING ${slug} FROM SHOPIFY`)
-    let product = await fetchProductBySlugFromShopify(slug)
+    // No caching on production.
+    // TODO: Invalidate cache after build and after timeout, and then use cache even in production
+    if (!filePath || process.env.NODE_ENV === 'production') {
+      console.log(`GETTING ${slug} FROM SHOPIFY`)
+      let product = await fetchProductBySlugFromShopify(slug)
 
-    // No need to write in prod
-    if (process.env.NODE_ENV !== 'production') {
-      await fs.outputJson(`${PRODUCT_CACHE}/${product.slug}.json`, product)
+      // No need to write in prod
+      if (process.env.NODE_ENV !== 'production') {
+        await fs.outputJson(`${PRODUCT_CACHE}/${product.slug}.json`, product)
+      }
+
+      return product
     }
 
-    return product
-  }
-
-  try {
     return await fs.readJson(filePath)
   } catch (e) {
     return null
