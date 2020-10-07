@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next'
+import Head from 'next/head'
 import Link from 'next/link'
 import { getTagPages } from '@next-storefront/core/adapter'
 import { ArrowRight } from 'react-feather'
@@ -26,6 +27,13 @@ interface HomePageProps {
 export default function HomePage({ tags }: HomePageProps) {
   return (
     <>
+      <Head>
+        <title>Next Storefront • Statik.ly</title>
+        <meta
+          property="description"
+          content="A dazzlingly fast E-Commerce solution built with Typescript and NextJS."
+        />
+      </Head>
       <header
         className="rounded overflow-hidden bg-cover bg-center flex items-center relative max-h-screen"
         style={{
@@ -39,11 +47,13 @@ export default function HomePage({ tags }: HomePageProps) {
         <div className="xl:container px-8 relative text-white leading-none">
           <h1 className="text-6xl font-bold">Hellon there</h1>
           <p className="text-xl pt-4 opacity-75">
-            Big floof would like you to buy a t-shirt
+            Big floof would like you to buy a shirt
           </p>
-          <button className="mt-8 bg-white rounded text-black font-bold text-xl uppercase tracking-wide py-5 px-8 flex items-center shadow-lg hover:bg-black hover:text-white">
-            Shop T-shirts <ArrowRight className="w-5 h-5 ml-3" />
-          </button>
+          <Link href="/tag/shirt">
+            <a className="mt-8 bg-white rounded text-black font-bold text-xl uppercase tracking-wide py-5 px-8 flex items-center shadow-lg hover:bg-black hover:text-white">
+              Shop Shirts <ArrowRight className="w-5 h-5 ml-3" />
+            </a>
+          </Link>
         </div>
       </header>
       <div className="pt-16">
