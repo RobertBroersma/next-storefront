@@ -53,7 +53,7 @@ function Sidebar() {
         <nav className="pt-5">
           <ul className="grid grid-flow-row gap-5">
             <li>
-              <Link href="#">
+              <Link href="/tag/men">
                 <a className="flex items-center text-gray-700 hover:text-gray-900">
                   <svg
                     className="w-8 h-8 mr-3"
@@ -74,7 +74,7 @@ function Sidebar() {
             </li>
 
             <li>
-              <Link href="#">
+              <Link href="/tag/women">
                 <a className="flex items-center text-gray-700 hover:text-gray-900">
                   <svg
                     className="w-8 h-8 mr-3"
@@ -96,7 +96,7 @@ function Sidebar() {
             </li>
 
             <li>
-              <Link href="#">
+              <Link href="/tag/kid">
                 <a className="flex items-center text-gray-700 hover:text-gray-900">
                   <svg
                     className="w-8 h-8 mr-3"
@@ -194,7 +194,7 @@ function Sidebar() {
             </li>
 
             <li>
-              <Link href="#">
+              <Link href="/tag/backpack">
                 <a className="flex items-center text-gray-700 hover:text-gray-900">
                   <svg
                     className="w-8 h-8 mr-3"

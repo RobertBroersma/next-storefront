@@ -51,7 +51,7 @@ export default function HomePage({ tags }: HomePageProps) {
         {/* HEADER */}
 
         <section className="grid grid-flow-row md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Link href="/tag/men">
+          <Link href="/tag/shirt">
             <a className="group rounded overflow-hidden pb-2/3 relative h-0">
               <img
                 src="https://images.unsplash.com/photo-1523381294911-8d3cead13475?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=80"
@@ -79,7 +79,7 @@ export default function HomePage({ tags }: HomePageProps) {
               </div>
             </a>
           </Link>
-          <Link href="/tag/men">
+          <Link href="/tag/women">
             <a className="group rounded overflow-hidden pb-2/3 relative h-0">
               <img
                 src="https://images.unsplash.com/photo-1587281148103-543bf73f6748?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=80"
