@@ -40,8 +40,6 @@ export async function getProductBySlug(slug: string) {
     sources.map(source => source.fetchProductBySlug(slug)),
   )
 
-  console.log(slug, products)
-
   return products.filter(Boolean)[0]
 }
 

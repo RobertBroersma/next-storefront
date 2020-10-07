@@ -50,7 +50,7 @@ export default function HomePage({ tags }: HomePageProps) {
             Big floof would like you to buy a shirt
           </p>
           <Link href="/tag/shirt">
-            <a className="mt-8 bg-white rounded text-black font-bold text-xl uppercase tracking-wide py-5 px-8 flex items-center shadow-lg hover:bg-black hover:text-white">
+            <a className="inline-flex mt-8 bg-white rounded text-black font-bold text-xl uppercase tracking-wide py-5 px-8 items-center shadow-lg hover:bg-black hover:text-white">
               Shop Shirts <ArrowRight className="w-5 h-5 ml-3" />
             </a>
           </Link>

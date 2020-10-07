@@ -8,8 +8,6 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
   let page = await getTagPage(tag, +pageNum)
 
-  console.log(page.results)
-
   return {
     props: {
       page,
