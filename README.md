@@ -137,16 +137,15 @@ Set environment variables:
 Create some products by adding `.json` files to the `products` directory.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
+- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [React Query](https://github.com/tannerlinsley/react-query)
+- [TypeScript](https://www.typescriptlang.org/)
 
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+- [Vue Storefront](https://www.vuestorefront.io/) - Inspiration
+- [Gatsby Theme Shopify Manager](https://gatsbythemeshopifymanager.com/) - Inspiration
 
 ## TODO Features (in no particular order):
 
@@ -164,5 +163,3 @@ Create some products by adding `.json` files to the `products` directory.
 - [ ] Custom Checkout
 - [ ] Order Pages
 - [ ] PWA
-
-## Roadmap
