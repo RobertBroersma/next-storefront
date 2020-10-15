@@ -1,39 +1,70 @@
+<p align="center">
+  <a href="" rel="noopener">
+ <img width=200px height=200px src="https://raw.githubusercontent.com/RobertBroersma/next-storefront/main/logo.svg" alt="Project logo"></a>
+</p>
+
+<h3 align="center">Next Storefront</h3>
+
+<div align="center">
+
+[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![GitHub Issues](https://img.shields.io/github/issues/RobertBroersma/funk.svg)](https://github.com/RobertBroersma/funk/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/RobertBroersma/funk.svg)](https://github.com/RobertBroersma/funk/pulls)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+
+</div>
+
+---
+
+<p align="center"> A dazzlingly fast E-Commerce solution built with Typescript and NextJS.
+    <br> 
+</p>
+
 <a href="https://discord.gg/KZmJGPF" >
   <img width="200" src="https://i.imgur.com/En8vQRC.png)" />
  </a>
 
-# 🚧 This code is under construction
+## 📝 Table of Contents
 
-# Next Storefront
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Usage](#usage)
+- [TODO](#todo)
 
-A dazzlingly fast E-Commerce solution built with Typescript and NextJS.
+## 🧐 About <a name = "about"></a>
 
-# Demo
+
 
 Visit the demo here: https://next-storefront-statik.vercel.app/
 
 > 📝 This demo will be updated regularly as cool new features are rolled out!
 
-## TODO Features (in no particular order):
+## 🏁 Getting Started <a name = "getting_started"></a>
 
-- [x] Static Generation
-- [x] Serverless deploy with Vercel or Netlify
-- [x] Use with Shopify
-- [x] Use with Stripe Checkout (This paves the way for retrieving products from anywhere!)
-- [ ] Use with Stripe Products
-- [ ] Use with other sources
-- [ ] Wishlists
-- [ ] Search & Filters
-- [ ] Custom Checkout
-- [ ] Order Pages
+### Installing
 
-## Roadmap
+Firstly, install `@next-storefront/core`. This package contains an adapter to pull in and transform data from different data sources. It also contains contexts and hooks.
 
-- [x] 1. Work with SSG
-- [x] 2. Work with Incremental Static (Re)generation
-- [ ] 3. Work with live-updates for things like inventory
+```
+npm install @next-storefront/core --save
+```
 
-## Config
+Or
+
+```
+yarn add @next-storefront/core
+```
+
+## 🎈 Usage <a name="usage"></a>
+
+Secondly, pick one or more data sources, and a checkout system.
+
+### Use with Shopify
+
+When working with Shopify, Shopify acts as both the source of products and the checkout.
+
+1. Install `@next-storefront/shopify`
+2. Configure Shopify as a source:
 
 ```js
 // next-storefront.config.js
@@ -43,49 +74,22 @@ module.exports = {
 }
 ```
 
-## Usage
+3. Configure Shopify Checkout:
+```tsx
+// App layout
 
-If you'd like to try it out yourself, clone the entire repo, cd into `/example` and then:
+import { CartProvider } from '@next-storefront/core'
+import * as shopifyCheckout from '@next-storefront/shopify/checkout'
 
-Install dependencies
-
-```
-yarn
-```
-
-or
-
-```
-npm install
-```
-
-Run Development:
+export function Layout({ Component, pageProps }) {
+  return (
+    <CartProvider checkout={shopifyCheckout}>
+      ...
+    </CartProvider>
+  )
+}
 
 ```
-yarn dev
-```
-
-or
-
-```
-npm run dev
-```
-
-Run Production:
-
-```
-yarn build
-yarn start
-```
-
-or
-
-```
-npm run build
-npm start
-```
-
-### Use with Shopify
 
 Get a Shopify _storefront_ api access token. The best way is to [create a private app](https://shopify.dev/docs/storefront-api/getting-started#private).
 
@@ -95,8 +99,70 @@ Set environment variables:
 
 ### Use With Stripe
 
+When working with Stripe, Stripe Checkout acts as the checkout. You can pull in product data from anywhere! (Even Shopify)
+1. Install any data source, e.g. `@next-storefront/json`
+2. Configure your data source:
+
+```js
+// next-storefront.config.js
+
+module.exports = {
+  sources: [require('@next-storefront/json')],
+}
+```
+
+3. Install `@next-storefront/stripe`
+4. Configure Stripe Checkout:
+
+```tsx
+// App layout
+
+import { CartProvider } from '@next-storefront/core'
+import * as stripeCheckout from '@next-storefront/stripe/checkout'
+
+export function Layout({ Component, pageProps }) {
+  return (
+    <CartProvider checkout={stripeCheckout}>
+      ...
+    </CartProvider>
+  )
+}
+
+```
+
 Set environment variables:  
-`STRIPE_SECRET_KEY`
+`STRIPE_SECRET_KEY`  
 `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
 
 Create some products by adding `.json` files to the `products` directory.
+
+## ⛏️ Built Using <a name = "built_using"></a>
+- [MongoDB](https://www.mongodb.com/) - Database
+- [Express](https://expressjs.com/) - Server Framework
+- [VueJs](https://vuejs.org/) - Web Framework
+- [NodeJs](https://nodejs.org/en/) - Server Environment
+
+
+## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+- Hat tip to anyone whose code was used
+- Inspiration
+- References
+
+## TODO Features (in no particular order):
+
+- [x] Static Generation
+- [x] Serverless deploy with Vercel or Netlify
+- [x] Work with SSG
+- [x] Work with Incremental Static (Re)generation
+- [ ] Work with live-updates for things like inventory
+- [x] Use with Shopify
+- [x] Use with Stripe Checkout (This paves the way for retrieving products from anywhere!)
+- [ ] Use with Stripe Products
+- [ ] Use with other sources
+- [ ] Wishlists
+- [ ] Search & Filters
+- [ ] Custom Checkout
+- [ ] Order Pages
+- [ ] PWA
+
+## Roadmap

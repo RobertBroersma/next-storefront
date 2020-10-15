@@ -45,7 +45,7 @@ export default function HomePage({ tags }: HomePageProps) {
       >
         <div className="bg-gradient-to-r from-black via-black to-transparent opacity-25 h-full w-full absolute inset-0" />
         <div className="xl:container px-8 relative text-white leading-none">
-          <h1 className="text-6xl font-bold">Hellon there</h1>
+          <h1 className="text-6xl font-bold">Henlo there</h1>
           <p className="text-xl pt-4 opacity-75">
             Big floof would like you to buy a shirt
           </p>
